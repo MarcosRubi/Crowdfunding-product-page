@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+    <title>Frontend Mentor | Crowdfunding product page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <header class="menu">
+        <div class="container">
+            <div class="d-flex jc-between align-center">
+                <div class="menu__logo">
+                    <a href="#"> <img src="images/logo.svg" alt="Logo"> </a>
+                </div>
+                <div class="menu__icon" id="icon-hamburger"></div>
+                <nav class="menu__nav">
+                    <ul class="d-flex flex-column-sm">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Discover</a></li>
+                        <li><a href="#">Get Started</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <picture>
+                <source srcset="images/image-hero-desktop.jpg" media="(min-width:768px)">
+                <img src="images/image-hero-mobile.jpg" alt="Imagen del producto">
+            </picture>
+        </section>
+        <section class="card-mastercraft container">
+            <div class="card-mastercraft__logo">
+                <div class=" d-flex jc-center">
+                    <img src="images/logo-mastercraft.svg" alt="Logo Mastercraft">
+                </div>
+            </div>
+            <div class="card-mastercraft__content">
+                <div class="text-center">
+                    <h1>Mastercraft Bamboo Monitor Riser</h1>
+                    <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
+                </div>
+                <div class="d-flex jc-center align-center jc-around-lg">
+                    <a class="btn btn-primary">Back this project</a>
+                    <a class="d-flex align-center">
+                        <img src="images/icon-bookmark.svg" alt="Icon">
+                        <span>Bookmark</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="card-stats container">
+            <ul class="text-center">
+                <li>
+                    <p>$ <label id="backed"></label></p>
+                    <span>of $100,000 backed</span>
+                </li>
+                <li>
+                    <p>$ <label id="backers"></label></p>
+                    <span>total backers</span>
+                </li>
+                <li>
+                    <p id="days"></p>
+                    <span>days left</span>
+                </li>
+            </ul>
+            <div class="progress__bar--bg">
+                <div class="progress__bar--color"></div>
+            </div>
+        </section>
+        <section class="prices container">
+            <h2 class="prices--title">About this project</h2>
+            <p class="prices--description">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that
+                elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the
+                potential to improve your posture and make you more comfortable while at work, helping you stay focused
+                on the task at hand.</p>
+            <p class="prices--description">Featuring artisan craftsmanship, the simplicity of design creates extra desk
+                space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
+            <article class="prices__item">
+                <div class="d-flex-lg">
+                    <h3>Bamboo Stand</h3>
+                    <span class="prices__item--pledge">Pledge $25 or more</span>
+                </div>
+                <p class="prices__item--description">You get an ergonomic stand made of natural bamboo. You've helped us
+                    launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+                <div class="d-flex-lg">
+                    <div class="d-flex align-center">
+                        <span class="prices__item--price option-2">101</span>
+                        <span class="prices__item--sub">left</span>
+                    </div>
+                    <a class="btn btn-primary" onclick="showModalPrices();">Select Reward</a>
+                </div>
+            </article>
+            <article class="prices__item">
+                <div class="d-flex-lg">
+                    <h3>Black Edition Stand</h3>
+                    <span class="prices__item--pledge">Pledge $75 or more</span>
+                </div>
+                <p class="prices__item--description">You get a Black Special Edition computer stand and a personal thank
+                    you. You’ll be added to our Backer member list. Shipping is included.</p>
+                <div class="d-flex-lg">
+                    <div class="d-flex align-center">
+                        <span class="prices__item--price option-3">64</span>
+                        <span class="prices__item--sub">left</span>
+                    </div>
+                    <a class="btn btn-primary" onclick="showModalPrices();">Select Reward</a>
+                </div>
+            </article>
+            <article class="prices__item disable">
+                <div class="d-flex-lg">
+                    <h3>Mahogany Special Edition</h3>
+                    <span class="prices__item--pledge">Pledge $200 or more</span>
+                </div>
+                <p class="prices__item--description">You get two Special Edition Mahogany stands, a Backer T-Shirt, and
+                    a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+                <div class="d-flex-lg">
+                    <div class="d-flex align-center">
+                        <span class="prices__item--price">0</span>
+                        <span class="prices__item--sub">left</span>
+                    </div>
+                    <a class="btn btn-disable">Out of stock</a>
+                </div>
+            </article>
+        </section>
+    </main>
+    <section class="prices container modal" id="modal-prices">
+        <div class="d-flex jc-between align-center">
+            <h2 class="prices--title">Back this project</h2>
+            <div class="icon">
+                <img src="images/icon-close-modal.svg" alt="Close modal" onclick="closeModal();">
+            </div>
+        </div>
+        <p class="prices--description">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?
+        </p>
+        <article class="prices__item" id="option-1">
+            <div class="d-flex align-center">
+                <input type="radio" name="rdbSelect">
+                <h3>Pledge with no reward</h3>
+            </div>
+            <p class="prices__item--description">Choose to support us without a reward if you simply believe in our
+                project. As a backer, you will be signed up to receive product updates via email.</p>
+            <div class="prices__item__confirm">
+                <hr>
+                <div class="d-flex-lg">
+                    <span class="prices__item__confirm--pledge text-center">Enter your pledge</span>
+                    <div class="d-flex jc-end">
+                        <a class="btn btn-primary" onclick="showModalSummary();updateStats(false)">Continue</a>
+                    </div>
+        </article>
+        <article class="prices__item" id="option-2">
+            <div class="d-flex align-center">
+                <input type="radio" name="rdbSelect">
+                <div class="d-flex-lg">
+                    <h3>Bamboo Stand</h3>
+                    <span class="prices__item--pledge">Pledge $25 or more</span>
+                </div>
+            </div>
+            <p class="prices__item--description">You get an ergonomic stand made of natural bamboo. You've helped us
+                launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+            <div class="d-flex align-center p-absolute-lg">
+                <span class="prices__item--price  option-2">101</span>
+                <span class="prices__item--sub">left</span>
+            </div>
+            <div class="prices__item__confirm">
+                <hr>
+                <div class="d-flex-lg">
+                    <div>
+                        <span class="prices__item__confirm--pledge text-center">Enter your pledge</span>
+                    </div>
+                    <div class="d-flex jc-between">
+                        <div class="input-group">
+                            <input type="number" required="" class="btn btn-secondary" value="25" min="25" />
+                            <span>$</span>
+                        </div>
+                        <a class="btn btn-primary"
+                            onclick="showModalSummary();updateLeft(2);updateStats();">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="prices__item" id="option-3">
+            <div class="d-flex align-center">
+                <input type="radio" name="rdbSelect">
+                <div class="d-flex-lg">
+                    <h3>Black Edition Stand</h3>
+                    <span class="prices__item--pledge">Pledge $75 or more</span>
+                </div>
+            </div>
+            <p class="prices__item--description">You get a Black Special Edition computer stand and a personal thank
+                you. You’ll be added to our Backer member list. Shipping is included.</p>
+            <div class="d-flex align-center  p-absolute-lg">
+                <span class="prices__item--price option-3">64</span>
+                <span class="prices__item--sub">left</span>
+            </div>
+            <div class="prices__item__confirm">
+                <hr>
+                <div class="d-flex-lg">
+                    <div>
+                        <span class="prices__item__confirm--pledge text-center">Enter your pledge</span>
+                    </div>
+                    <div class="d-flex jc-between">
+                        <div class="input-group">
+                            <input type="number" required="" class="btn btn-secondary" value="75" min="75" />
+                            <span>$</span>
+                        </div>
+                        <a class="btn btn-primary" onclick="showModalSummary();updateLeft(3);updateStats()">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="prices__item disable" id="option-4">
+            <div class="d-flex align-center">
+                <input type="radio" name="rdbSelect">
+                <div class="d-flex-lg">
+                    <h3>Mahogany Special Edition</h3>
+                    <span class="prices__item--pledge">Pledge $200 or more</span>
+                </div>
+            </div>
+            <p class="prices__item--description">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a
+                personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+            <div class="d-flex align-center p-absolute-lg">
+                <span class="prices__item--price">0</span>
+                <span class="prices__item--sub">left</span>
+            </div>
+            <div class="prices__item__confirm">
+                <hr>
+                <div class="d-flex-lg">
+                    <div>
+                        <span class="prices__item__confirm--pledge text-center">Enter your pledge</span>
+                    </div>
+                    <div class="d-flex jc-between">
+                        <div class="input-group">
+                            <input type="number" required="" class="btn btn-secondary" value="200" min="200" disabled />
+                            <span>$</span>
+                        </div>
+                        <a class="btn btn-primary">Continue</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </section>
+    <section class="modal summary">
+        <div class="text-center">
+            <div class="d-flex jc-center">
+                <img src="images/icon-check.svg" alt="Icon Check">
+            </div>
+            <h4>Thanks for your support!</h4>
+            <p>Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get
+                an email once our campaign is completed.</p>
+            <a class="btn btn-primary" onclick="completeOrder();">Got it!</a>
+        </div>
+    </section>
+
+    <!-- Success modal end -->
+    <script src="js/scripts.js"></script>
+    <script type="text/javascript">
+        let stats =
+        {
+            backed: 89914,
+            brackers: 5007,
+            days: 56
+        }
+
+        const totalBackers = document.getElementById('backers')
+        const totalBacked = document.getElementById('backed')
+        const daysLeft = document.getElementById('days')
+
+        totalBacked.innerHTML = stats.backed.toLocaleString('en-US')
+        totalBackers.innerHTML = stats.brackers.toLocaleString('en-US')
+        daysLeft.innerHTML = stats.days
+
+        //MODAL
+        const main = document.querySelector("main")
+        const modalPrices = document.getElementById('modal-prices')
+        const modalSummary = document.querySelector('.modal.summary')
+
+        function showModalPrices() {
+            main.classList.add('bg')
+            modalPrices.classList.add('show')
+        }
+        function showModalSummary() {
+            main.classList.add('bg')
+            modalPrices.classList.remove('show')
+            modalSummary.classList.add('show')
+        }
+        function closeModal() {
+            main.classList.remove('bg')
+            modalPrices.classList.remove('show')
+        }
+        function completeOrder() {
+            const pricesItemConfirm = document.querySelector('.prices__item__confirm.show')
+            pricesItemConfirm.classList.remove('show')
+            modalSummary.classList.remove('show')
+            main.classList.remove('bg')
+        }
+        function updateLeft(id) {
+            const items = document.querySelectorAll(`.option-${id}`)
+            items.forEach(item => item.innerHTML = parseInt(item.textContent) - 1);
+        }
+        function updateStats(pledge = true) {
+            const totalBackers = document.getElementById('backers')
+            const totalBacked = document.getElementById('backed')
+
+            stats.brackers = stats.brackers + 1
+            totalBackers.innerHTML = stats.brackers.toLocaleString('en-US')
+
+            if (pledge) {
+                const input = document.querySelector('.prices__item.selected input[type="number"]').value
+                stats.backed = stats.backed + parseInt(input)
+                totalBacked.innerHTML = stats.backed.toLocaleString('en-US')
+                progressBarAnimation()
+            }
+
+        }
+        function progressBarAnimation() {
+            const progressBar = document.querySelector('.progress__bar--color')
+            let widht = stats.backed.toLocaleString('en-US').split(',')[0]
+
+            parseInt(widht) > 100 ? widht = 100 : ''
+            progressBar.style.width = `${widht}%`;
+        }
+        progressBarAnimation()
+    </script>
+</body>
+
+</html>
